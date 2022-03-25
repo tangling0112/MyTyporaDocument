@@ -24,9 +24,51 @@ class Solution(object):
         return []
 ```
 
-### 1.3核心思想
+### 1.3 核心思想
 
-### 1.4知识点
+- 使用哈希表来存储遍历过的数组中的数据
+- 使用$target-num$的方法来得到当前数字需要的另一个数字
+- 使用$target-num$在哈希表中找是否有需要的
+
+### 1.4 知识点
+
+#### 1.4.1 C语言中哈希表的实现
+
+```c
+import uthash//引入uthash库
+    创建哈希表中的每一个项目的结构
+struct HashTable{
+	int key;
+    int value;
+    UT_hash_handle hh;//添加哈希句柄
+}
+```
+
+- 在哈希表中添加项目
+
+  ```c
+  HASH_ADD_INT(<hashTableObject>,<NameOFkey>,<StructPoint>)
+  ```
+
+- 在哈希表中查找项目
+
+  ```c
+  HASH_FIND_INT(<hashTable>,<SiteOFkey>,<StructPoint>)
+  ```
+
+- 在哈希表中将对应项目替换掉,并返回该被替换的项目
+
+  ```c
+  HASH_REPLACE_INT(<hashTable>,<NameOFkey>,<NewStructPoint>,<OldStructPoint>)
+  ```
+
+- 删除哈希表中的指定项目
+
+  ```c
+  HASH_DEL(<hashTable>,<StrcutPoint>)
+  ```
+
+  
 
 ## 2 两数相加
 
@@ -83,4 +125,8 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2){
 
 ### 2.3 核心思想
 
-### 2.4知识点
+使用链表进行迭代计算
+
+### 2.4 知识点
+
+- 由于我们必须让链表的最后一个节点的`next`指针指向`NULL`因此我们的`Tail`指针必须通过`Tail->next->val;Tail=Tail->next`的方式进行赋值,这样才能保证结束计算时,`Tail`指针指向的是链表的最后一个数字对应的节点,而不是一个空结点
