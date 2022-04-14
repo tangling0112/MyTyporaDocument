@@ -1060,3 +1060,9 @@ class Transformer(nn.Module):
 1. 在六个`Decoder`中,只有进入第一个`Decoder`的`MultiHeadAttention`之前需要做`Padding Mask`
 2. 预测过程中不需要做`Sequence Mask`
 3. 没进入一次Decoder模块只可以得到一个预测的目标词,即便输出是`[1,64,Vocab_size]`
+
+## 3 功能实现上的技巧性操作
+
+### 3.1 MultiHeadAttention的一次性完成
+
+### 3.2 Padding Mask的Mask矩阵的生成
