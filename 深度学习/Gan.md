@@ -274,7 +274,7 @@ for epoch in range(5000):
 - 在项目的根工作目录下新建`Generater.py`文件,并将生成器的代码复制粘贴进文件
 - 在项目的根工作目录下新建`Train.py`文件,并将主函数的代码复制粘贴进文件
 - 具体图示
-  - <img src="C:\Users\Administrator\Desktop\Typora文档\深度学习\image_56.png" alt="image_56" style="zoom:60%;" />
+  - <img src="C:\Users\Administrator\Desktop\Typora文档\深度学习\Gan.assets\image_56.png" alt="image_56" style="zoom:60%;" />
 
 ## 生成图片展示
 
@@ -284,4 +284,4 @@ for epoch in range(5000):
 
 ### 图片
 
-- <img src="C:\Users\Administrator\Desktop\Typora文档\深度学习\image_57.png" alt="image_57" style="zoom:33%;" /><img src="C:\Users\Administrator\Desktop\Typora文档\深度学习\image_58.png" alt="image_58" style="zoom: 33%;" /><img src="C:\Users\Administrator\Desktop\Typora文档\深度学习\image-20220419170954164.png" alt="image-20220419170954164" style="zoom:27%;" />
+- <img src="C:\Users\Administrator\Desktop\Typora文档\深度学习\Gan.assets\image_57.png" alt="image_57" style="zoom:33%;" /><img src="C:\Users\Administrator\Desktop\Typora文档\深度学习\Gan.assets\image_58.png" alt="image_58" style="zoom: 33%;" /><img src="C:\Users\Administrator\Desktop\Typora文档\深度学习\Gan.assets\image-20220419170954164.png" alt="image-20220419170954164" style="zoom:27%;" />
