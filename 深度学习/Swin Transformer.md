@@ -1,8 +1,12 @@
 # Swin Transformer
 
+## 模型解决的问题
+
+## 模型的基本步骤
+
 ## 多尺度采样
 
-<img src="C:\Users\Administrator\Desktop\Typora文档\深度学习\Swin Transformer.assets\image-20220423130057233.png" alt="image-20220423130057233" style="zoom:80%;" />
+<img src="C:\Users\Administrator\Desktop\Typora文档\深度学习\Swin Transformer.assets\image-20220423130057233.png" alt="image-20220423130057233" style="zoom:61.8%;" />
 
 ## Relative position bias
 
@@ -12,14 +16,12 @@ $Attention(Q,K,V)=SoftMax(QK^T/d+B)V,其中B为M^2×M^2的矩阵,Q,K,V为M^2×d�
 
 - $\left(\begin{array}{c c c c}1&2&1&2\\3&4&3&4\\1&2&1&2\\3&4&3&4\end{array}\right),H×W×C\rightarrow^{空洞卷积}\begin{array}{l}\left(\begin{array}{c c}1&1\\1&1\end{array}\right)&\left(\begin{array}{c c}2&2\\2&2\end{array}\right)\\\left(\begin{array}{c c}3&3\\3&3\end{array}\right)&\left(\begin{array}{c c}4&4\\4&4\end{array}\right)\end{array},\frac{H}{2}×\frac{W}{2}×C×4\rightarrow^{concat}\frac{H}{2}×\frac{W}{2}×4C\rightarrow^{1×1卷积}\frac{H}{2}×\frac{W}{2}×2C$
 
-## Shifted Window Based Self-Attention
-
-### Window Based Self-Attention
+###  基于窗口的Self-Attention
 
 <img src="C:\Users\Administrator\Desktop\Typora文档\深度学习\Swin Transformer.assets\image-20220423143059120.png" alt="image-20220423143059120" style="zoom:50%;" />
 
-- 前提:对于一张224×224×3的图片,我们使用4×4的Patch则会得到56×56×48的矩阵,再通过Linear Embedding得到56×56×C的矩阵
-- 在进入Swin Transformer Block时输入为$56×56×C$,我们的Swin Transformer不像ViT一样对整个$56×56×C$的矩阵做自注意,而是将其划分为$\frac{56}{M}$个子矩阵即$\frac{56}{M}×\frac{56}{M}×C$,然后对子矩阵分别做自注意,并且由于Self-Attention是不改变输入维度的,因此输出还是$\frac{56}{M}×\frac{56}{M}×C$,此时我们按照原来划分的方式,把这些输出再拼接回$56×56×M$的矩阵
+- 前提:对于一张$224×224×3$的图片,我们使用$4×4$的Patch则会得到$56×56×48$的矩阵,再通过``Linear Embedding``得到$$56×56×C$$的矩阵
+- 在进入``Swin Transformer Block``时输入为$56×56×C$,我们的``Swin Transformer``不像``ViT``一样对整个$56×56×C$的矩阵做自注意,而是将其划分为$\frac{56}{M}$个子矩阵即$\frac{56}{M}×\frac{56}{M}×C$,然后对子矩阵分别做自注意,并且由于``Self-Attention``是不改变输入维度的,因此输出还是$\frac{56}{M}×\frac{56}{M}×C$,此时我们按照原来划分的方式,把这些输出再拼接回$56×56×M$的矩阵
   - 具体实现方式应该是
     - 给出$56×56×C$的输入
     - 按窗口划分成$\frac{56}{M}×\frac{56}{M}$个不重叠的子窗口$M×M×C$
@@ -28,7 +30,7 @@ $Attention(Q,K,V)=SoftMax(QK^T/d+B)V,其中B为M^2×M^2的矩阵,Q,K,V为M^2×d�
     - 然后进行`Self-Attention`操作计算$Q,K,V$计算$QK^T$计算$Softmax(\frac{QK^T}{\sqrt{d_k}})V$
 - **为什么要使用窗口?**
 
-### Shift Window
+### 移动窗口
 
 <img src="C:\Users\Administrator\Desktop\Typora文档\深度学习\Swin Transformer.assets\image-20220423143134328.png" alt="image-20220423143134328" style="zoom:50%;" />
 

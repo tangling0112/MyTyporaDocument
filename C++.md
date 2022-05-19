@@ -1,10 +1,10 @@
 # C++
 
-## 第一部分
 
-### 数据类型
 
-#### 变量
+## 数据类型
+
+### 变量
 
 **定义方式**：`数据类型`  `变量名` = `变量初始值`
 
@@ -21,13 +21,13 @@
 | string(需include<string>) |                                            |                 |
 |     bool(true/false)      |                 1字节,8bit                 |       1/0       |
 
-#### 常量
+### 常量
 
 - `const` `数据类型` `常量名` = `常量值`
 - `#define` `常量名` `常量值`
 - **特性**:常量的值不可被任何操作修改 ,如果我们试图修改则会报错
 
-### 常用计算符号
+## 常用计算符号
 
 | 符号 | 作用          |
 | ---- | ------------- |
@@ -56,7 +56,7 @@
 
 ****
 
-### 结构体
+## 结构体
 
 - 结构体的定义:`struct 结构体名 {结构体成员}`
 
@@ -76,7 +76,7 @@
     }变量名;
     ```
 
-#### 结构体数组
+### 结构体数组
 
 - 前提:结构体已经定义好
 - 定义方式
@@ -85,7 +85,7 @@
 - 结构体数组的访问
   - `结构体数组名[结构体索引].结构体成员名`
 
-#### 结构体指针
+### 结构体指针
 
 - 前提:结构体已经定义好
 - 定义方式
@@ -94,7 +94,7 @@
 - 通过指针访问结构体成员
   - `结构体指针名->成员名`
 
-#### 结构体的`.`方法与`->`方法
+### 结构体的`.`方法与`->`方法
 
 - `.`:用于访问结构体变量的成员
 
@@ -111,9 +111,9 @@
   zs->name
   ```
 
-#### 结构体的嵌套
+### 结构体的嵌套
 
-##### 普通结构体嵌套普通结构体
+#### 普通结构体嵌套普通结构体
 
 - 通过`结构体变量名.子结构体变量名.子结构体的成员名`的方式来访问子结构体的成员
 
@@ -130,7 +130,7 @@ struct teacher{
 };
 ```
 
-##### 普通结构体嵌套指针结构体
+#### 普通结构体嵌套指针结构体
 
 - 通过`结构体变量名.子结构体变量名->子结构体成员名`来访问子结构体成员
 - :red_circle: **注意**:当我们创建了一个指向主结构体的结构体指针时通过`结构体指针名->子结构体变量名->子结构体成员`来访问子结构体成员
@@ -148,7 +148,7 @@ struct teacher{
 };
 ```
 
-##### 结构体传参
+#### 结构体传参
 
 - **传地址**
   - 形式参数应该定义为`struct 结构体名* 结构体指针名`
@@ -161,7 +161,7 @@ struct teacher{
   - 然后使用`形式参数名.结构体成员名`即可访问
   - :small_red_triangle:**特性**:**在子函数中无论如何修改结构体变量的成员,主函数中的对应结构体变量的成员都不会被修改**
 
-##### 结构体中使用const
+#### 结构体中使用const
 
 - 定义方式
   - `const struct 结构体名 结构体变量名`
@@ -169,7 +169,7 @@ struct teacher{
 - 作用
   - 一般用在结构体传地址时,避免子函数内修改结构体变量的成员.这样做**既可以保证主函数的结构体变量不被修改,又可以利用传递指针来节省内存空间**
 
-##### 值传递与地址传递
+#### 值传递与地址传递
 
 - `变量,数组,结构体`都具备`值传递`与`地址传递`两种传递参数的方式
 - **值传递**
@@ -181,17 +181,7 @@ struct teacher{
 
 ****
 
-### C++内存模型
-
-#### 代码区
-
-#### 全局区
-
-#### 栈区
-
-#### 堆区
-
-### new运算符分配地址与delete释放内存
+## new运算符分配地址与delete释放内存
 
 - new分配地址
 
@@ -214,14 +204,14 @@ struct teacher{
 
 ****
 
-### :yellow_heart: 静态变量
+##  静态变量:yellow_heart:
 
 - 定义方式
   - `static 数据类型 变量名`
   - `static 数据类型 变量名 = 变量初始值`
 - :blue_heart: **特性**:静态变量只有主函数被释放时才会被释放,即所有被主函数调用的函数,以及这些函数调用的函数创建的静态变量,都只会在主函数被释放时才会被释放.
 
-### :red_circle: 引用
+##  引用:red_circle:
 
 > **作用**:用于给变量起别名
 
@@ -232,13 +222,9 @@ struct teacher{
   - 引用的创建必须严格按照语法进行
   - 引用创建后就不能改变(b应用了a,那么b就无法被修改为c的引用)
 
-#### 引用作为函数的返回值
+### 引用作为函数的返回值
 
-- **作用**:
-
-- > **前提**
->
-  > - **不要传递函数的局部变量**的引用(因为其在函数结束执行后,局部变量就会被自动释放)
+> **前提**:**不要传递函数的局部变量**的引用(因为其在函数结束执行后,局部变量就会被自动释放)
 
 - **特性**:当我们的函数返回引用时,我们的函数就可以作为赋值运算的左值
 
@@ -267,12 +253,12 @@ struct teacher{
   int& b = func()
   ```
 
-#### 引用的本质
+### 引用的本质
 
 - `int &别名 = 原名`等价于`int* const 别名 = &原名`
 - 并且在我们使用别名时也会自动转换为`*别名`
 
-#### 以常量形式引用
+### 以常量形式引用
 
 - `const 数据类型&别名 = 原名`
 - **特性**:此时我们无法通过这样创建的别名来修改原名的值,要修改的话我们只能通过原名来进行.
@@ -280,11 +266,9 @@ struct teacher{
 
 ****
 
-## 第二部分
+## 函数的高阶操作
 
-### 函数的高阶操作
-
-#### 函数传参
+### 函数传参
 
 - 基本类型
 
@@ -311,7 +295,7 @@ struct teacher{
     int func(int a, int b=10);定义
     ```
 
-#### 函数重载
+### 函数重载
 
 > **作用**:支持多个函数同名,根据我们传递的参数,来调用同名函数中的某一个
 
@@ -328,15 +312,13 @@ struct teacher{
 
 ****
 
-### 类与对象
+## 类与对象
 
-#### 类
+### ==类==
 
 > 三大特性:==封装,继承,多态==
 
-##### 封装
-
-##### 使用class定义类
+#### 使用class定义类
 
 - 基本语法:`class 类名(访问权限 类属性 类方法 访问权限 类属性 类方法...)`
 
@@ -357,7 +339,7 @@ struct teacher{
   - ==我们可以使用`实例化的类对象名.属性`的方式来访问实例化的类对象的属性==
   - ==我们可以使用`实例化的类对象名.方法()`的方式来调用实例化的类对象的方法==
 
-##### :red_circle: 访问权限
+#### 访问权限
 
 - `public`:``public`的类内**属性与方法**,**可以**被类内方法访问,也**可以**通过`类实例.`的方式访问,还**可以被继承了该类的子类访问**
 
@@ -379,7 +361,7 @@ struct teacher{
   
   ```
 
-##### 使用`struct`定义类
+#### 使用`struct`定义类
 
 - ==与`class`的区别:`struct`的默认权限为`public`,而`class`的默认权限为`private`==
 
@@ -396,9 +378,9 @@ struct teacher{
 
 ****
 
-#### 对象
+### ==对象==
 
-##### 对象的清理与初始化
+#### 构造函数与析构函数
 
 > **作用**：即每一个对象在被创建时以及被销毁时都需要有对应的设置。而**构造函数**与**析构函数**就是用来实现这一点的
 
@@ -464,14 +446,14 @@ struct teacher{
 
 ****
 
-##### 匿名对象
+#### 匿名对象
 
-- `类名`或`类名(参数)`
-- **注意**:`类名(对象名)`等价于`类名 对象名`
+- `数据类型(参数)`
+- **注意**:`数据类型(参数)`等价于`数据类型 参数`
 
 ****
 
-##### ==拷贝构造函数的作用==
+#### ==拷贝构造函数的作用==
 
 - 语法:`类名(const 类名 &任意名称){}`
 - 作用
@@ -479,7 +461,7 @@ struct teacher{
   - 值传递类时被调用(原因在于值传递等价于`类名 形式参数名 = 被传递的类的名称`,这就是一个隐式转换法的拷贝构造函数调用)
   - 值方式返回类时被调用(原因在于在主函数中为`函数的返回值类型 对象名 = 函数名()`这就等价于`类名 对象名 = 即将被销毁的类的名称`,这也是一个隐式转换法的拷贝构造函数调用)
 
-##### :japanese_goblin: 构造函数的调用规则
+####  构造函数的调用规则
 
 - 默认情况下,编译器会自动给类创建
   - **无参构造函数(函数体为空,没有实际作用)**
@@ -491,19 +473,19 @@ struct teacher{
 
 ****
 
-##### ==深拷贝与浅拷贝==
+#### ==深拷贝与浅拷贝==
 
-- 浅拷贝:通过简单的赋值来进行拷贝,并且对于指针类型的属性则直接传地址(编译器自动实现的拷贝就是浅拷贝)
+- **浅拷贝**:通过简单的赋值来进行拷贝,并且对于指针类型的属性则直接传地址(编译器自动实现的拷贝就是浅拷贝)
 
   > - **问题**:我们通过浅拷贝创建的第二个类对象的指针与原类对象指向的是同一个内存地址,因此当我们释放了两者任意一个指针指向的内存地址后,如果在用另外一个再次执行内存地址释放操作,就会引起内存释放的非法操作.因此对于指针属性,我们应该尽可能地使用深拷贝来进行拷贝操作.
 
-- 深拷贝:在堆区申请新的空间来进行拷贝
+- **深拷贝**:在堆区申请新的空间来进行拷贝
 
   > - **问题**:由于在拷贝构造时,会申请新的堆区内存空间进行存储与指向,因此我们拷贝构造的指针就与原指针指向不同的内存地址,但是他们的值在拷贝时是一致的.因此由于指向内存地址不同,因此就不过发生浅拷贝所引发的非法操作问题
 
-- 实例
+- **实例**
 
-  - 浅拷贝
+  - **浅拷贝**
 
     ```c++
     class Person{
@@ -530,7 +512,7 @@ struct teacher{
     再来释放Person1时,又会对上一步同一个地址再次释放,这是系统不允许的,因此会出现错误
     ```
   
-  - 深拷贝
+  - **深拷贝**
   
     ```C++
     class Person{
@@ -559,7 +541,7 @@ struct teacher{
 
 ****
 
-##### 基于初始化列表以及构造函数的类属性初始化
+#### 基于初始化列表以及构造函数的类属性初始化
 
 - 基本语法
   - `类名(参数):属性1(值1),属性2(值2)...{语句体}`
@@ -580,7 +562,7 @@ struct teacher{
 
 ****
 
-##### 类中的类
+#### 类中的类
 
 > **作用**:让指定的类作为其他类的成员属性,并可以通过`.`方法来调用类成员的属性
 
@@ -617,7 +599,7 @@ struct teacher{
 
 ****
 
-##### 静态变量
+### 静态变量
 
 - 特性
 
@@ -651,7 +633,7 @@ struct teacher{
   
   ```
 
-##### 静态成员函数
+### 静态成员函数
 
 - **特性**
 
@@ -681,7 +663,7 @@ struct teacher{
 
 ****
 
-##### 成员与成员函数的分离存储特性
+### 成员与成员函数的分离存储特性
 
 > 前提:我们`C++`中成员属性与成员函数有不同的保存规则
 
@@ -715,7 +697,7 @@ struct teacher{
 
 ****
 
-##### `this`指针
+### `this`指针
 
 > **背景**:由于类的成员函数是被共享使用的,因此`C++`的每一个成员函数都会自动维护一个`this`指针,其指向调用该成员函数的类实例.
 
@@ -749,7 +731,7 @@ struct teacher{
 
 ****
 
-##### 空指针访问
+### 空指针访问
 
 - > **作用**:用于在不实例化类对象的情况下调用成员函数,值得注意的是我们是不可以访问成员属性的,因为空指针是没有成员属性的.
 
@@ -774,7 +756,7 @@ struct teacher{
 
 ****
 
-##### `const`修饰成员函数
+### `const`修饰成员函数
 
 - **作用**:这样定义的成员函数虽然可以读取成员属性,但是其不能修改成员属性的值(当然,如果成员属性在定义时使用了`mutable`关键字进行修饰,那么就能被修改)
 
@@ -800,7 +782,7 @@ struct teacher{
 
 ****
 
-##### `const`在类对象实例化时使用
+### `const`在类对象实例化时使用
 
 - **作用**:将该类实例定义为常对象
 
@@ -836,7 +818,7 @@ struct teacher{
 
 ****
 
-##### 友元
+### 友元
 
 - > **前提**:我们知道对于私有权限的成员属性与成员函数,除了我们的类对象内部的函数以外是无法被外接访问的.
 
@@ -908,7 +890,7 @@ struct teacher{
   
   ```
 
-##### ==:red_circle: 重大问题:red_circle:==
+### :red_circle: 重大问题:red_circle:
 
 - 关于成员函数做友元时可能会遇到的难以解决的一个问题
 
@@ -988,7 +970,7 @@ struct teacher{
   };
   ```
 
-##### ==链式函数调用==
+### :red_circle:链式函数调用:red_circle:
 
 - > **前提**:对于结构体或者类实例而言,我们可以通过`实例化对象.成员函数名(参数)`的方式来调用该对象的成员函数,并且每一个成员函数中都自动维护一个`this`指针来指向调用当前成员函数的对象.
 
@@ -1013,9 +995,9 @@ struct teacher{
 
 ****
 
-##### 运算符重载
+### 运算符重载
 
-##### 常见运算符对应的函数名称
+#### 常见运算符对应的函数名称
 
 - |      |      |
   | ---- | ---- |
@@ -1035,7 +1017,7 @@ struct teacher{
 
 - 函数调用重载
 
-### 继承
+### ==继承==
 
 #### 公共继承
 
@@ -1208,7 +1190,7 @@ struct teacher{
 - <img src="C:\Users\Administrator\Desktop\Typora文档\C++.assets\image-20220430142019753.png" alt="image-20220430142019753" style="zoom:50%;" />
 - <img src="C:\Users\Administrator\Desktop\Typora文档\C++.assets\image-20220430143113618.png" alt="image-20220430143113618" style="zoom: 60%;" />
 
-### :japanese_ogre:==多态==
+### ==多态==
 
 - > 注意：C++是允许子类被强制转化为父类的
 
@@ -1407,7 +1389,7 @@ struct teacher{
 
 ****
 
-### 文件操作
+## 文件操作
 
 - **前提**
   - **读写**:`include<fstream>`
@@ -1503,9 +1485,7 @@ struct teacher{
 
 ****
 
-## 第三部分
-
-### 模板
+## 模板
 
 > 1. **模板的概念**
 >    - 模板是一个通用的框架,我们通过对一个模板进行修改便可以快速地实现一个新的功能.模板又类似于Web编程中组件的概念
@@ -1514,6 +1494,8 @@ struct teacher{
 >    - 函数模板:建立一个通用的函数,其返回值类型与参数类型都不具体指定而是用一个虚拟的类型来作为占位
 >    - 类模板:
 >
+
+### 函数模板
 
 #### 函数模板定义
 
@@ -1587,7 +1569,8 @@ struct teacher{
 - **显示类型指定**
 
   - :red_circle: **使用方法**:`模板函数名<数据类型1,数据类型2...>(实参)`
-  - 特点:通过直接指定模板函数中每个虚拟数据类型的真实数据类型来调用模板函数
+
+> 特点:通过直接指定模板函数中每个虚拟数据类型的真实数据类型来调用模板函数
 
 #### 函数模板与普通函数的区别与相同点
 
@@ -1686,7 +1669,7 @@ struct teacher{
 
 ****
 
-#### 类模板
+### 类模板
 
 - **作用**:构建一个通用类,这个类中的成员属性的数据类型或成员函数的返回值以及形式参数可以通过虚拟数据类型进行定义
 
@@ -1702,8 +1685,7 @@ struct teacher{
   class 类名{类语句体}
   ```
 
-
-##### 类模板与函数模板的不同
+#### 类模板与函数模板的不同
 
 - 类模板是不具备自动推导机制的,由类创建对象的原理就知道原因.
 
@@ -1717,12 +1699,12 @@ struct teacher{
 
 - **注意:japanese_ogre:**:只有类模板可以由默认数据类型,函数模板是不具备的.
 
-#####  类模板中成员函数的创建时机:red_circle:
+####  类模板中成员函数的创建时机:red_circle:
 
 - 普通类中的所有成员函数在程序一开始运行就会成功创建,得到内存分配
 - 类模板中的成员函数只有我们使用类模板实例化了类对象并使用到了该成员函数**才会试图创建该被使用的成员函数,其他没有被使用的则不会被创建**.
 
-##### 类模板对象做函数参数的三种方法
+#### 类模板对象做函数参数的三种方法
 
 > - 指定传入的类型
 >
@@ -1773,7 +1755,7 @@ int main(void) {
 }
 ```
 
-##### 类模板与继承
+#### 类模板与继承
 
 - 子类在继承类模板时,必须在定义时就指定出类模板使用的虚拟数据类型的真实数据类型
 
@@ -1818,7 +1800,7 @@ int main(void) {
   };
   ```
 
-##### 类模板的成员函数的类外实现
+#### 类模板的成员函数的类外实现
 
 - ```C++
   #include<iostream>
@@ -1841,7 +1823,7 @@ int main(void) {
   };
   ```
 
-##### ==类模板分文件编写==
+#### ==类模板分文件编写==
 
 - > `include<.h>`与`include<.cpp>`与`include<.hpp>`有什么区别？
   
@@ -2097,9 +2079,9 @@ int main(void) {
 
 - > 上述代码呈现出什么问题？
 
-##### :red_circle:==类模板与友元==:red_circle:
+#### :red_circle:类模板与友元:red_circle:
 
-###### 全局函数
+##### 全局函数
 
 - 类内实现使用了虚拟数据类型的全局函数,同时附加友元
 
@@ -2190,7 +2172,7 @@ int main(void) {
 
 ****
 
-### :small_red_triangle: C++中子类构造函数与父类构造函数的关系
+##  C++中子类构造函数与父类构造函数的关系
 
 - 若是子类没有自定义构造方法(此时编译器会自动生成有参,无参,拷贝三种构造函数)，在建立子类的对象的时候,首先调用父类的无参数的构造方法,然后根据用户建立子类对象的方式调用由编译器自行生成的三种构造方法之一.
 - 若是子类只自定义了带参数的构造方法)(此时编译器不会自动创建有参,午餐构造,但是会自动创建拷贝构造)，在建立子类的对象的时候,首先执行父类的无参数的构造方法，而后执行我们自定义的有参数构造方法。 
@@ -2198,7 +2180,7 @@ int main(void) {
 - 在建立子类对象时候，若是子类的构造函数**没有显示调用**父类的构造函数且**父类本身提供自定义的了无参构造函数**，则会调用父类的**自定义的无参构造函数**。
 - 在建立子类对象时候，若是子类的构造函数**没有显示调用**父类的构造函数且**父类只自定义了有参构造函数**(此时编译器**不会给父类生成默认的无参构造函数**)，此时由于**在创建子类时需要自动调用父类的无参数构造函数**,而无参数构造函数并没有存在于父类中,我们的程序便会报错.
 
-#### 子类显式调用父类有参构造函数
+### 子类显式调用父类有参构造函数
 
 - **语法**:
   - `子类名():父类构造函数名(参数){语句体}`
@@ -2226,6 +2208,715 @@ int main(void) {
       return 0;
   };
   ```
+
+****
+
+## STL
+
+> STL容器是可以保存自定义数据类型的
+
+### STL的六大组件
+
+- 容器:实现了各种数据结构，如`vector`,`list`,`deque`,`set`,`map`等
+- 算法:实现了各种常用的算法,如`sort`,`find`,`copy`,`for_each`等
+- 迭代器:获得一个
+- 仿函数:
+- 适配器:
+- 空间配置器:负责空间的配置与管理
+
+### 容器
+
+> 容器分为两种
+>
+> - 序列式容器:序列式容器在内存占用上是连续的,并且先输入的元素的内存地址一定先于后输入的元素,如一般的数组.
+> - 关联式容器;关联式容器在内存占用上是非连续的,并且输入元素的内存地址之间是不具备严格的先后关系的,他们之间的关系是通过指针来进行维系的,如树,链表等数据结构
+
+### 算法
+
+> **算法分为两种**
+>
+> - **质变算法**:即算法运行后会修改我们的输入中元素的内容,如拷贝,替换,删除
+> - **非质变算法**:即算法运行后不会修改我们的输入中元素的内容,如查找,计数,遍历,极值
+
+### 迭代器
+
+> - 迭代器提供一种方法,使得我们的算法不仅能够按照顺序访问指定到容器中的各个元素,还能避免暴露容器内部的表示方式.
+>
+> - 每个容器都有一个专属的迭代器
+
+#### 迭代器分类
+
+| 种类           | 功能                                         | 支持的运算            |
+| -------------- | -------------------------------------------- | --------------------- |
+| 输入迭代器     | 只读                                         | ++,==,!=              |
+| 输出迭代器     | 只写                                         | ++                    |
+| 前向迭代器     | 读写,且能按顺序向前迭代访问                  | ++,==,!=              |
+| 双向迭代器     | 读写,且能按顺序向前或向后迭代访问            | ++,–                  |
+| 随机访问迭代器 | 读写,可以随意读取容器中任意元素,无需遵循顺序 | ++,–,[n],-n,<,<=,>,>= |
+
+#### 常见迭代器实例化(以`deque`为例)
+
+- `deque<int>::const_iterator <iterator> = d.begin()`
+- `deque<int>::iterator <iterator> = d.begin()`
+
+****
+
+### `Vector`容器
+
+> **特性**:`Vector`容器不同于静态数组(在定义时指定了多少个元素的存储空间就只能最多存储多少个元素),`Vector`容器是可以动态扩展的,即只要我们调用`push_back()`就能向容器中添加元素,没有限**制**
+>
+> **动态扩展的原理**:每当我们`push_back()`一个元素,我们的`Vector`容器就会找到内存中的一块新的更大的空间,将原始数据复制到新空间(旧空间中的则删除)
+
+#### 常用方法
+
+- `rend()`：返回`Vector`容器的第一个元素前面一个内存块的内存地址
+- `begin()`：返回`Vector`容器的第一个元素的内存地址
+- `insert()`：
+- `rbegin()`：返回`Vector`容器的最后一个元素的内存地址
+- `end()`：返回`Vector`容器的最后一个元素后面一个内存块的内存地址
+- `push_back()`：在`Vector`容器的尾部追加一个元素
+- `pop_back()`:从`Vector`容器的尾部取出一个元素(该元素会从`Vector`容器中被删除)
+- `front()`:
+- `back()`
+- <img src="C:\Users\Administrator\Desktop\Typora文档\C++.assets\image-20220505133216402.png" alt="image-20220505133216402" style="zoom: 67%;" />
+
+#### `Vector`的构造与操作
+
+- 构造
+  - `vector<数据类型> v`:创建一个空的`Vector`
+  - `vector<数据类型> v1(v.begin(),v.end())`:拷贝容器`v`的``[v.begin(),v.end())``区间内的元素并创建成新的容器`v1`
+  - `vector<数据类型> v(int n,num)`:用`n`个`num`来初始化容器
+  - `vector<数据类型> v1(v)`:拷贝容器`v`,并用其创建容器`v1`
+- 赋值
+  - `v1=v2`:让容器`v1`复制容器`v2`中的所有元素
+  - `v.assign(beginpointer,endpointer)`:只保留容器`v`的`[beginpointer,endpointer)`区间内的数据
+  - `v.assign(int n,num)`:将容器中的所有原本的元素去除,并填充n个数`num`
+
+
+#### `Vector`的容量与大小
+
+- `v.empty()`:判断容器是否为空
+- `v.capacity()`:返回容器的容量
+- `v.size()`:返回容器中元素的个数
+- `v.resize(int n,elem)`
+  - 更改容器的容量为`n`,若容器变长,则多出来的位置用`elem`值填充.若容器变短,则多出来的原有元素将被直接删除
+
+`Vector`的插入与删除
+
+- `v.push_back(elem)`:在`Vector`容器尾部附加新元素,值赋为`elem`
+- `v.pop_back()`:取出并删除最后一个元素
+- `v.insert(PosPointer,int cout,elem)`:在`vector`容器的`PosPointer`指针指示的元素的后面添加`cout`个元素,其值赋为`elem`
+- `v.erase(BeginPointer,EndPointer)`:删除`Vector`容器的`BeginPointer`到`EndPointer`之间的元素
+- `v.clear()`:清空容器
+
+#### `Vector`数据存取
+
+- `v.at(int index)`:返回`index`索引位置的元素的值,等价于`Python取值操作`
+- `v[int index]`:等价于`at`
+- `v.front()`:返回容器的第一个元素的值
+- `v.back()`:返回容器最后一个元素的值
+
+#### `Vector`容器互换
+
+- `v1.swap(v2)`:将`v1`的元素变为`v2`的元素,`v2`的元素变为`v1`的元素
+
+- **注意**:两个`Vector`的内存位置是不会发生变化的,只是将`v1`实例指向了`v2`实例的内存地址,将`v2`实例指向了`v1`实例的内存地址.并没有发生实质上数据的交换,只是发什么名称的交换
+
+- **巧妙用法**
+
+  ```C++
+  //创建了匿名对象p,并用p容器与v容器互换了内存,而匿名对象在对应语句执行完毕后就会被编译器自动销毁,收回其使用的全部内存空间
+  vector<int>(p).swap(v)
+  ```
+
+#### `Vector`容器预留空间
+
+- `v.reserve(int len)`:给我们的`Vector`容器尾部预留`Len`个元素的内存空间,这些空间不可访问,也不能初始化
+
+- **作用**:当我们给我们的`Vector`容器设置了预留空间时,我们再执行如`push_back()`,`insert()`方法插入元素,编译器就不会重新给我们的容器分配一个新的内存空间,而是直接将容器尾部的下一个位置的内存激活,用于存储我们添加的元素
+
+- > 因此其作用在于使得我们的容器在被添加元素时,不再多次重新分配内存,而是直接在容器末尾划归内存用于使用.
+
+#### 基本步骤
+
+- 包含头文件`#include<vector>`
+
+- 实例化容器:`vector<数据类型> 容器名`
+- 容器对象的基本方法
+  - `push_back(数值)`:用于向`vector`容器中插入数据
+  - `begin()`:用于获取`vector`容器的指向第一个元素的指针
+  - `end()`:用于获取指向`vector`容器的最后一个元素的下一个位置的指针
+- 通过迭代器访问`vector`容器中的元素
+  - 实例化起始迭代器`vector<数据类型>::iterator 迭代器名 = 迭代器.begin()`
+  - 实例化终止迭代器`vector<数据类型>::iterator 迭代器名 = 迭代器.end()`
+
+#### 遍历`vector`容器
+
+- 第一种
+
+  ```c++
+  vector<int>::iterator itBegin = v.begin();
+  vector<int>::iterator itEnd = v.end();
+  while(itBegin!=itEnd){
+      itBegin++;
+      cout << *itBegin << endl;
+  };
+  
+  ```
+
+- 第二种
+
+  ```C++
+  for(vector<int>::iterator itBegin = v.begin();itBegin!=v.end();itBegin++){
+      cout << *itBegin << endl;
+  };
+  ```
+
+- 第三种
+
+  ```c++
+  int MyPrint(int Num){
+      cout << Num << endl;
+  };
+  for_each(v.begin(),v.end(),MyPrint);	
+  ```
+
+> **注意**:`vector`容器不仅可以**存储基本数据类型**,还可以**存储自定义数据类型**,还可以**存储指针**,还可以**存储其他容器**
+>
+> ``注意``:要在存储各种不同的数据类型的情况下正确操作只需要记住``v.begin()``于``v.end()``返回的是``指针``
+
+****
+
+### `String`容器
+
+#### `String`容器的构造
+
+- `string 字符串名`:创建一个空字符串对象
+- `string 字符串名(const char* s)`:创建一个字符串对象,并且该新建字符串对象内容与字符串``s``相同
+- `string 字符串名(const string& str)`:创建一个字符串对象,并且该新建字符串对象内容与字符串``str``相同
+- `string 字符串名(int n,char c)`:创建一个字符串对象,并且该新建字符串对象内容为`n`个字符`c`
+
+#### `String`容器的基本方法
+
+- 基础属性方法
+  - `str.size()`
+
+- 字符串赋值
+
+  - `str="<字符串>"`
+  - `str1 = str2`
+  - `str = '<字符常量>'`
+  - `str.assign("<字符串常量>")`
+  - `str.assign("<字符串常量>",int n)`
+  -   `str1.assign(str2)`
+  - `str.assign(int n,'字符常量')`
+
+- 字符串拼接
+
+  - `str+="<字符串>"`
+  - `str1 += str2`
+  - `str += '<字符常量>'`
+  - `str.append("<字符串常量>")`
+  - `str.append("<字符串常量>",int n)`
+  - `str.append("<字符串常量>",int pos,int n)`
+  -   `str1.append(str2)`
+  - `str.append(int n,'字符常量')`
+
+- 字符串查找与替换
+
+  - ![image-20220505120424534](C:\Users\Administrator\Desktop\Typora文档\C++.assets\image-20220505120424534.png)
+
+- 字符串比较
+
+  - `str1>str2`
+  - `str1<str2`
+  - `str1=str2`
+  - 比较规则
+    - 首先比字符串的第一个元素,如果`str1`的第一个元素的`ASCII`码大于``str2``的第一个元素的`ASCII`码那么此时`str1`就已经大于``str2``了,后面的比较则不会再进行.如果相等则按照上述规则,依次递推比较.
+
+- 字符串取值与切片
+
+  - `str[int n]`
+
+  - `str.at(int n)`
+
+  - `str.substr(int pos,int n)`:获取字符串第`pos`位置之后的`n`个字符(包括第`pos`位置的字符),返回一个字符串
+
+  - > **注意**:我们可以通过取值操作来对字符串指定位置的字符进行修改
+    >
+    > `string str = "Hello";`
+    >
+    > `str[2] = M;`
+    >
+    > `//out:HeMlo`
+
+- 字符串插入与删除
+
+  - `str.insert(int pos,const char* s)`:在字符串的第`pos`个位置之后插入字符串`s`
+  - `str1.insert(int pos,str2)`:在字符串的第`pos`个位置后插入`str2`
+  - `str.insert(int pos,int n,char c)`:在字符串的第`pos`个位置后插入`n`个字符`c`
+  - `str.erase(int pos,int n)`:删除字符串的第`pos`个位置之后的`n`个字符(包括第`pos`个位置)
+
+****
+
+****
+
+### `deque`容器
+
+> `deque`是一个双端数组,其头部与尾部都可以插入删除数据,其内部实现并不是链表,其内容存储实际上是以一种数组+数组的形式实现的(`一个数组中存储大量指针,每一个指针指向一个其他的数组也就是类似于二维数组`),其头部插入删除数据不再需要引发后面的数据整体后移前移的问题
+>
+> `**deque`支持随机访问**
+
+#### `deque`与`vector`的区别
+
+- `deque`可以在不引发后续元素整体前移后移的情况下使得我们可以在数组的头部插入元素
+- `vector`访问内部元素的速度相对于`deque`而言更快
+
+#### `deque`的实现原理
+
+- <img src="C:\Users\Administrator\Desktop\Typora文档\C++.assets\image-20220518183132864.png" alt="image-20220518183132864" style="zoom: 61.8%;" />
+- 内部实现
+  - 我们可以这样理解,`deque`自身会自动维护一个链表,这个链表的每一个节点都有两个指针(实际上不止两个,这里为了表述清晰只写了两个)`指针1:指向一个内存块的首地址,指针2:指向链表的下一个节点`,`deque`维护的这个链表是一个每个节点的第一个指针指向的内存块是一段能够存储一定数量的元素的内存空间(即一个节点映射一个连续空间).
+- 元素的插入删除
+  - 当我们需要在头部插入数据时,只需找到`deque`容器对应的链表的头部指针,然后查询第一个节点中的数组是否头部可以插入,如果可以就将数据插入进去,如果不可以,就新建一个新的链表节点,使得该节点变成链表的第一个节点,然后对这个节点进行插入
+
+#### `deque`的构造函数
+
+- `deque<数据类型> 容器名`
+- `d.deque(begin,end)`:将容器`d`的`[begin,end)`区间内的元素覆盖容器`d`本身
+- `d.deque(n,elem)`:将容器`d`用`n`个`elem`覆盖
+- `d.deque(d1)`:将容器`d1`的元素用来初始化容器`d`
+
+#### `deque`的赋值
+
+- `d=d1`效果等价于`d.deque(d1)`
+- `d.assign(beg,end)`:将容器`d`的`[begin,end)`区间内的元素覆盖容器`d`本身
+- `d.assign(n,elem)`:将容器`d`用`n`个`elem`覆盖
+
+#### `deque`的容量与大小
+
+- `d.empty()`:判断容器是否为空
+- `d.size()`:返回容器中元素的个数
+- `d.resize(num,elem)`:更改容器的容量为`n`,若容器变长,则多出来的位置用`elem`值填充.若容器变短,则多出来的原有元素将被直接删除
+
+#### `deque`的数据存取
+
+- `d.push_back(num)`:在尾部存入数据
+- `d.pop_back()`:在尾部提取并删除元素
+- `d.push_front(num)`:在头部存入数据
+- `d.pop_front`:在头部提取并删除元素
+- <img src="C:\Users\Administrator\Desktop\Typora文档\C++.assets\image-20220518185344282.png" alt="image-20220518185344282" style="zoom: 61.8%;" /><img src="C:\Users\Administrator\Desktop\Typora文档\C++.assets\image-20220518185741223.png" alt="image-20220518185741223" style="zoom:64%;" />
+
+#### `deque`容器互换
+
+#### `deque`排序
+
+- `sort(iterator begin,iterator end)`:对容器`d`的指定区间内的元素`[begin,end)`进行排序
+
+  ```C++
+  #include <deque>
+  #include <iostream>
+  #include <algorithm>
+  int main(void){
+      deque<int> d;
+      d.push_back(300);
+      d.push_back(3);
+      d.push_back(50);
+      d.push_back(25);
+      sort(d.begin(),d.end());
+      for(deque<int>::const_iterator i=d.begin();i!=d.end();i++){
+          cout << *i << endl;
+      };
+      
+  }
+  ```
+
+****
+
+### `stack`容器
+
+> 前提:`stack`容器其实就是我们的数据结构中的栈的标准实现(`后进先出`),其只允许我们访问栈顶元素,并且如果栈顶元素不弹出,那么我们便不能访问其后一个元素.因此`stack`容器是**不具备迭代功能的**
+
+#### `stack`的实现原理
+
+- <img src="C:\Users\Administrator\Desktop\Typora文档\C++.assets\image-20220518191232031.png" alt="image-20220518191232031" style="zoom:50%;" />
+
+#### `stack`的构造
+
+- `stack<数据类型> 容器名`
+- `s.stack(s1)`:使用容器`s1`初始化`s`
+
+#### `stack`赋值
+
+- `s=s1`等价于`s.stack(s1)`
+
+#### `stack`数据存取
+
+- `s.push(num)`:压栈
+- `s.pop()`:弹栈
+- `s.top()`:返回栈顶元素的值
+
+#### `stack`容量
+
+- `s.empty()`:判断栈是否为空
+- `s.size()`:返回栈中元素数
+
+### `queue`容器
+
+> `queue`即我们数据结构中的队列,其遵循``先进先出,后进后出``,因此其也**不支持元素迭代遍历**
+
+#### `queue`实现原理
+
+- <img src="C:\Users\Administrator\Desktop\Typora文档\C++.assets\image-20220518192646380.png" alt="image-20220518192646380" style="zoom: 67%;" />
+
+#### `queue`构造
+
+- `queue<数据类型> 容器名`
+- `q.queue(q1)`:用容器`q1`初始化容器`q`
+
+#### `queue`赋值
+
+- `q=q1`等价于`q.queue<q1>`
+
+#### `queue`数据存取
+
+- `q.pop()`:移除队列第一个元素
+- `q.push(num)`:向队尾添加元素
+- `q.back()`:返回队尾的元素的引用
+- `q.front()`:返回队首的元素的引用
+
+#### `queue`容量
+
+- `q.empty()`:判断`queue`是否为空
+- `q.size()`:返回队列中元素数目
+
+****
+
+### `list`容器
+
+> `list`即我们数据结构中学习的链表,其具备多个节点,每一个节点存储一个元素.由于链表的特性`list`容器是**不支持随机访问的**,但是我们可以通过**迭代器遍历`list`容器的元素**
+>
+> `list`有`begin()`与`end()`函数
+>
+> `list`容器只支持双向访问
+
+#### `list`的构造
+
+- <img src="C:\Users\Administrator\Desktop\Typora文档\C++.assets\image-20220518194125175.png" alt="image-20220518194125175" style="zoom:67%;" />
+
+#### `list`赋值与交换
+
+- <img src="C:\Users\Administrator\Desktop\Typora文档\C++.assets\image-20220518194145316.png" alt="image-20220518194145316" style="zoom:67%;" />
+
+#### `list`数据存取
+
+- <img src="C:\Users\Administrator\Desktop\Typora文档\C++.assets\image-20220518194318180.png" alt="image-20220518194318180" style="zoom:67%;" />
+- <img src="C:\Users\Administrator\Desktop\Typora文档\C++.assets\image-20220518194334748.png" alt="image-20220518194334748" style="zoom:67%;" />
+
+#### `list`容量
+
+- <img src="C:\Users\Administrator\Desktop\Typora文档\C++.assets\image-20220518194250472.png" alt="image-20220518194250472" style="zoom:67%;" />
+
+#### `list`反转与排序
+
+> 这两个函数都是容器内置函数
+
+- <img src="C:\Users\Administrator\Desktop\Typora文档\C++.assets\image-20220518194818388.png" alt="image-20220518194818388" style="zoom:67%;" />
+
+#### 存储自定义数据类型的`list`容器的排序
+
+```C++
+#include <iostream>
+#include <string>
+#include <list>
+using namespace std;
+class Person {
+public:
+    Person(string name, int age, int height) {
+        this->m_name = name;
+        this->m_age = age;
+        this->m_height = height;
+    };
+    string m_name;
+    int m_age;
+    int m_height;
+};
+bool ComparePerson(const Person& P1, const Person& P2) {
+    if (P1.m_age == P2.m_age) {
+        return P1.m_height > P2.m_height;
+    }
+    else {
+        return P1.m_age > P2.m_age;
+    };
+}
+int main(void) {
+    Person P1("张三", 18, 180);
+    Person P2("李四", 25, 165);
+    Person P3("王五", 16, 195);
+    list<Person> L;
+    L.push_back(P1);
+    L.push_back(P2);
+    L.push_back(P3);
+    cout << "排序前:" << endl;
+    for (list<Person>::iterator i = L.begin(); i != L.end(); i++) {
+        cout << "姓名:" << (*i).m_name << "年龄:" << (*i).m_age << "身高:" << (*i).m_height << endl;
+    }
+    cout << "排序后:" << endl;
+    L.sort(ComparePerson);
+    for (list<Person>::iterator i = L.begin(); i != L.end(); i++) {
+        cout << "姓名:" << (*i).m_name << "年龄:" << (*i).m_age << "身高:" << (*i).m_height << endl;
+    };
+    return 0;
+}
+```
+
+****
+
+### `set`与`multiset`容器
+
+> `set`即我们`Python`中的集合,而`multiset`则可以认为是一个魔改版
+>
+> `set`与`multiset`支持
+>
+> `set`有`begin()`与`end()`函数
+>
+> `set`与`multiset`有相同的`API`
+
+#### `set`与`multiset`的特点
+
+- 两个容器中的元素都是自动排序的(**从小到大排序**)
+- `set`容器中元素不允许重复
+- `multiset`中元素可以重复
+
+#### `set`与`multiset`的实现原理
+
+#### `set`与的构造
+
+- `set<数据类型> 容器名`
+- `s.set(s1)`:用容器`s1`初始化容器`s`
+
+#### `set`与的赋值
+
+- `s=s1`:等价于`s.set(s1)`
+
+#### `set`与的容量
+
+- <img src="C:\Users\Administrator\Desktop\Typora文档\C++.assets\image-20220518210709951.png" alt="image-20220518210709951" style="zoom:67%;" />
+
+#### `set`与的插入删除
+
+- <img src="C:\Users\Administrator\Desktop\Typora文档\C++.assets\image-20220518210810399.png" alt="image-20220518210810399" style="zoom: 67%;" />
+
+#### `set`与的查找与统计
+
+- <img src="C:\Users\Administrator\Desktop\Typora文档\C++.assets\image_68.png" alt="image_68" style="zoom:67%;" />
+
+#### `set`的排序
+
+- 存储内置数据类型时的排序
+
+  ```C++
+  #include<iostream>
+  #include<set>
+  using namespace std;
+  class MyCompare {
+  public:
+      bool operator()(const int& P1, const int& P2) const {
+          return P1 < P2;
+      };
+  };
+  int main(void) {
+      set<int, MyCompare> s;
+      s.insert(10);
+      s.insert(50);
+      s.insert(15);
+      s.insert(33);
+      for (set<int,MyCompare>::iterator i = s.begin(); i != s.end(); i++) {
+          cout << (*i) << endl;
+      };
+      return 0;
+  };
+  ```
+
+  
+
+- 存储自定义数据类型时的排序
+
+  ```C++
+  #include<iostream>
+  #include<set>
+  using namespace std;
+  class Person {
+  public:
+      string m_name;
+      int m_age;
+      int m_height;
+      Person(string name, int age, int height) {
+          this->m_age = age;
+          this->m_name = name;
+          this->m_height = height;
+      };
+  };
+  class MyCompare {
+  public:
+      bool operator()(const Person& P1, const Person& P2) const {
+          if (P1.m_age == P2.m_age) {
+              return P1.m_height > P2.m_height;
+          }
+          else {
+              return P1.m_age > P2.m_age;
+          };
+      };
+  };
+  int main(void) {
+      set<Person, MyCompare> s;
+      Person P1("张三", 18, 165);
+      Person P2("李四", 25, 155);
+      Person P3("王五", 22, 185);
+      Person P4("赵六", 55, 166);
+      s.insert(P1);
+      s.insert(P2);
+      s.insert(P3);
+      s.insert(P4);
+      for (set<Person, MyCompare>::iterator i = s.begin(); i != s.end(); i++) {
+          cout << "姓名:" << (*i).m_name << "年龄:" << (*i).m_age << "身高:" << (*i).m_height << endl;
+      };
+      return 0;
+  };
+  ```
+
+****
+
+### `pair`容器
+
+> 不同于上面的容器可以存储**多个元素**,`pair`容器只能存储**一个元素(这个元素包含两个数据)**
+
+#### `pair`的作用
+
+- 可以用于接收来自`set`容器的返回值
+
+#### `pair`的构造
+
+- `pair<数据类型1,数据类型2> 容器名(value1,value2)`
+- `pair<数据类型1,数据类型2> 容器名 = make_pair(value1,value2)`
+
+#### `pair`的赋值
+
+- `p=p1`:等价于`p.pair(p1)`
+
+#### `pair`的数据存取
+
+- `p.first`:取元素的第一个数据
+- `p.second`:取元素的第二个数据
+
+#### 使用`pair`获取`set`的返回值
+
+```C++
+#include<iostream>
+#include<set>
+using namespace std;
+int main(void){
+	set<int> s;
+	s.insert(10);
+	pair<set<int>::iterator,bool> res = s.insert(10);
+	cout << res.second() << endl
+    return 0;
+};
+```
+
+****
+
+### `map`与`multimap`容器
+
+> `map`容器其实就是我们`python`中使用的`字典对象`(只是``python``中字典不会按照`键`进行自动排序),我们建立`map`容器需要借助`pair`容器,我们的`multimap`容器则可以认为是`map`容器的魔改版
+>
+> `map`与`multimap`容器有`begin()与end()`方法
+>
+> `map`与`multimap`容器具备随机访问能力
+>
+> 
+
+#### `map`与`multimap`的对比
+
+- 两个容器都会根据``键``进行排序
+- `map`容器中不允许出现重复的`键`,而`multimap`容器中允许出现重复的`键`
+- `map`与`multimap`中每一个元素都为一个`pair`容器
+- `pair`容器的第一个元素为元素的``键``,第二个元素为元素的`值`
+
+#### `map`的构造与赋值
+
+- `map<数据类型1,数据类型2> mp`
+- `mp.map(mp1)`:使用容器`mp1`初始化容器`mp`
+- `mp=mp1`:等价于`mp.map(mp1)`
+
+#### `map`的容量与交换
+
+- `mp.size()`:给出容器`mp`中`pair`容器的数量
+- `mp.empty()`:判断容器`mp`是否为空
+- `mp.swap(mp1)`:交换容器`mp`与容器`mp1`
+
+#### `map`的插入删除
+
+- `mp.insert(elem)`:向容器`mp`插入元素
+- `mp.clear()`:清除容器`mp`中全部元素
+- `mp.erase(pos)`:删除容器`mp` `pos`位置的元素返回删除之后当前位置的元素的迭代器
+- `mp.erase(begin,end)`:删除容器`np`的`[begin,end)`区间内的元素,返回删除之后当前位置的元素的迭代器
+- `mp.erase(key)`:删除容器`mp`中``键``为`key`的元素
+
+#### `map`的查找与统计
+
+- `mp.find(key)`:返回容器`mp`的键为`key`的元素的迭代器,若不存在返回`mp.end()`
+- `mp.count(key)`:返回容器`mp`中键为`key`的元素的数量
+
+#### `map`的排序
+
+- 内置数据类型作为`键`时的排序
+
+  ```C++
+  #include<iostream>
+  #include<map>
+  #include<string>
+  using namespace std;
+  class MyCompare {
+  public:
+      bool operator()(const string& P1, const string& P2) const {
+          return P1 > P2;
+      };
+  };
+  int main(void) {
+      map<string, int> mp;
+      pair<string, int> P1("张三", 18);
+      pair<string, int> P2("李四", 20);
+      pair<string, int> P3("王五", 18);
+      pair<string, int> P4("赵六", 20);
+      mp.insert(P1);
+      mp.insert(P2);
+      mp.insert(P3);
+      mp.insert(P4);
+      for (map<string, int, MyCompare>::iterator i = mp.begin(); i != mp.end(); i++) {
+          cout << "姓名:" << (*i).first << "年龄:" << (*i).second << endl;
+      };
+      return 0;
+  };
+  ```
+
+  
+
+- 自定义数据类型作为`键`时的排序
+
+****
+
+### 仿函数
+
+****
+
+### 各个容器优缺点总结
+
+- 除`string`容器外其他的容器都可以存储自定义数据类型
+
+### 常用算法
+
+> 前提:我们在使用之前需要`#include<algorithm>`,值得注意的是不支持随机访问的容器是无法使用标准算法的
 
 ****
 
